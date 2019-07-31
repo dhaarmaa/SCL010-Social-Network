@@ -1,0 +1,1 @@
+//vista del registro de usuario
