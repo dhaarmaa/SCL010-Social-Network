@@ -10,7 +10,7 @@ export const templateRegister = () => {
 
     containerRegister.innerHTML = contentRegister;
 
-    const btn = containerRegister.querySelector('#register');
+    const btn = containerRegister.querySelector('#registerbtn');
 
     btn.addEventListener('click', () =>{
         registerAcount();

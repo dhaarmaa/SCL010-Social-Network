@@ -2,16 +2,27 @@
 const loginGoogle = () =>{
     console.log("login con Google");
 }
-
 export const templateLogin= () => {
     const containerLogin = document.createElement('div');
-    const contentLogin = `<p>Login con google</p>
-                            <button id="login">Login with Google</button>`
+    const contentLogin = `  <h1>Hola Bienvenid@!</h1>
+                            <p>Correo</p>                            
+                            <input type= "text">
+                            <p>contraseña</p>
+                            <input type= "text">
+
+                            <button id="login">Iniciar Sesión</button>
+                            <button id="btnregister">Registrarme</button>`
     containerLogin.innerHTML =  contentLogin;
 
-const btn =  containerLogin.querySelector('#login');
-btn.addEventListener('click', ()=>{
-    loginGoogle()
+const btnLogin=  containerLogin.querySelector('#login');
+btnLogin.addEventListener('click', ()=>{
+    loginGoogle();
+    
+
+})
+const btnRegister = containerLogin.querySelector('#register');
+btnRegister.addEventListener('click', () =>{
+
 })
 return containerLogin;
 }

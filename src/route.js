@@ -2,7 +2,7 @@ import { templateLogin } from './assets/views/templateLogin.js'
 import { templateRegister }  from  './assets/views/templateRegister.js'
 
 const changeRouter = (hash) =>{
-    if(hash === '#/login' || hash === '#/register'){
+    if(hash === '#/login' || hash === '#/register' || hash === '/#' || hash === '#' || hash === ''){
         return showTemplate(hash);
     }
 }
@@ -18,9 +18,18 @@ const showTemplate = (hash) =>{
         case 'login': 
         containerRoot.appendChild(templateLogin())
         break;
+        case '/#':
+        containerRoot.appendChild(templateLogin())
+        break;
+        case '#/':
+        containerRoot.appendChild(templateLogin())
+        break;
+        case '':
+        containerRoot.appendChild(templateLogin())
+        break;
         case 'register':
-            containerRoot.appendChild(templateRegister())
-            break;
+        containerRoot.appendChild(templateRegister())
+        break;
         default:
             containerRoot.innerHTML = `<p> Error 404</p>`
     }
