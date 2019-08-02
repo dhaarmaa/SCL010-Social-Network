@@ -1,7 +1,7 @@
 {
-  "name": "scl010-social-network",
+  "name": "social-network",
   "version": "1.0.0",
-  "description": "Social network project for laboratoria cohort SCL010",
+  "description": "social network project for laboratoria",
   "main": "src/index.html",
   "scripts": {
     "test": "jest --coverage",
@@ -12,21 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anabelcarrion/SCL010-Social-Network.git"
+    "url": "git+https://github.com/Laboratoria/SCL010-Social-Network.git"
   },
   "keywords": [
     "social",
     "network",
-    "scl",
+    "laboratoria",
     "010",
-    "app"
+    "SCL"
   ],
-  "author": "Laboratoria",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anabelcarrion/SCL010-Social-Network/issues"
+    "url": "https://github.com/Laboratoria/SCL010-Social-Network/issues"
   },
-  "homepage": "https://github.com/anabelcarrion/SCL010-Social-Network#readme",
+  "homepage": "https://github.com/Laboratoria/SCL010-Social-Network#readme",
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
