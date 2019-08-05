@@ -1,6 +1,4 @@
-const loginGoogle = () => {
-  console.log("Login con Google");
-}
+import { loginGoogle } from './../js/auth.js';
 
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
