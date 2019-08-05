@@ -1,33 +1,32 @@
 {
-  "name": "scl010-social-network",
+  "name": "social-network",
   "version": "1.0.0",
-  "description": "social network project for laboratoria cohort SLC010",
+  "description": "social network project for laboratoria",
   "main": "src/index.html",
   "scripts": {
-    "test": "jest--coverage",
-    "eslint": "eslint--ext .js/src/ test/",
-    "htmlhint": "htmlhinit src/*.html",
-    "pretest": "npm run eslint && npm run htmlhinit",
+    "test": "jest --coverage",
+    "eslint": "eslint --ext .js src/ test/",
+    "htmlhint": "htmlhint src/*.html",
+    "pretest": "npm run eslint && npm run htmlhint",
     "deploy": "gh-pages -d src/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhaarmaa/SCL010-Social-Network.git"
+    "url": "git+https://github.com/Laboratoria/SCL010-Social-Network.git"
   },
   "keywords": [
     "social",
     "network",
-    "slc",
+    "laboratoria",
     "010",
-    "event",
-    "elder"
+    "SCL"
   ],
-  "author": "laboratoria",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dhaarmaa/SCL010-Social-Network/issues"
+    "url": "https://github.com/Laboratoria/SCL010-Social-Network/issues"
   },
-  "homepage": "https://github.com/dhaarmaa/SCL010-Social-Network#readme",
+  "homepage": "https://github.com/Laboratoria/SCL010-Social-Network#readme",
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
