@@ -1,46 +1,47 @@
-import { templateLogin } from './assets/views/templateLogin.js';
-import { templateCreate } from './assets/views/templateCreate.js';
+import { templateLogin } from './assets/views/templateLogin.js'
+import { templateRegister }  from  './assets/views/templateRegister.js'
+import { templateMainScreen } from './assets/views/templateMainScreen.js'
 
-/* changeRouter llama a la función que carga cada template */
-const changeRouter = (hash) => {
-  if (hash === '#/login') {
-    return showTemplate(hash);
-  }
-
-  if (hash === '#/create') {
-    return showTemplate(hash);
-  }
-
-}
-
-// imprimirá el template en el html
-const showTemplate = (hash) => {
-  const router = hash.substring(2);
-  const containerRoot = document.getElementById('root');
-  containerRoot.innerHTML = '';
-
-  // hacemos el match del hash utilizado y el template que queremos mostrar
-  switch (router) {
-    case 'login':
-      containerRoot.appendChild(templateLogin());
-    break;
-    case 'create':
-      containerRoot.appendChild(templateCreate());
-    break;
-    default:
-      containerRoot.innerHTML = `<p>Error 404</p>`
-  }
-}
-
-
-/* initRouter es la función que 'escucha' los cambios de hash */
-export const initRouter = () => {
-  window.addEventListener('load', changeRouter(window.location.hash));
-
-  // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
-  if ('onhashchange' in window) {
-    window.onhashchange = () => {
-      changeRouter(window.location.hash);
+const changeRouter = (hash) =>{
+    if(hash === '#/login' || hash === '#/register' || hash === '/#' || hash === '#' || hash === ''){
+        return showTemplate(hash);
     }
-  }
+}
+
+const showTemplate = (hash) =>{
+    const router = hash.substring(2);
+    const containerRoot = 
+    document.getElementById('root');
+    containerRoot.innerHTML = '';
+
+
+    switch(router){
+        case 'login': 
+        containerRoot.appendChild(templateLogin())
+        break;
+        case '/#':
+        containerRoot.appendChild(templateMainScreen())
+        break;
+        case '#/':
+        containerRoot.appendChild(templateMainScreen())
+        break;
+        case '':
+        containerRoot.appendChild(templateMainScreen())
+        break;
+        case 'register':
+        containerRoot.appendChild(templateRegister())
+        break;
+        default:
+            containerRoot.innerHTML = `<p> Error 404</p>`
+    }
+}
+
+export  const initRouter = () =>{
+    window.addEventListener('load', changeRouter(window.location.hash));
+    if('onhashchange' in window){
+        window.onhashchange = ()=>{
+            changeRouter
+            (window.location.hash);
+        }
+    }
 }

@@ -41,7 +41,7 @@ body {
      
 }
 
-#button {
+/* #button {
     width: 100%;
     text-align: center;
     width: 80px;
@@ -57,5 +57,23 @@ body {
     -webkit-transition: color 0.1s, background 0.3s, border 0.5s;
     transition: color 0.1s, background 0.3s, border 0.5s;
     box-shadow: 1px 2px 2px grey
+} */
+/*nota... # = id y  el . = class*/
+
+/*estilo de botton de mainScreen*/
+
+#login , #register, #loginGoogle{
+    /* position: absolute; */
+    width: 300px;
+    height: 120px;
+    left: 30px;
+    top: 298px;
+    
+    background: rgba(255, 118, 18, 0.55);
+    /* Orange */
+    
+    border: 1px solid #F2994A;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
