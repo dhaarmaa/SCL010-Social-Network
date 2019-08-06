@@ -1,4 +1,5 @@
 import { loginGoogle } from './../js/auth.js';
+// import { }
 
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
@@ -10,14 +11,14 @@ export const templateLogin = () => {
                         <p>contraseña</p>
                         <input type= "text">
 
-                        <button id="login">Iniciar Sesión</button>`;
+                        <`;
   // pasar el contenido al div
   containerLogin.innerHTML = contentLogin;
   // le pido que busque el id del boton dentro del div creado
   const btn = containerLogin.querySelector('#login');
   // evento del botón que llama a la autentificación de google.
-  btn.addEventListener('click', () => {
-    loginGoogle();
-  })
+  // btn.addEventListener('click', () => {
+  //   loginGoogle();
+  // })
   return containerLogin;
 }

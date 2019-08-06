@@ -1,5 +1,6 @@
 import { templateLogin } from './assets/views/templateLogin.js'
 import { templateRegister }  from  './assets/views/templateRegister.js'
+import { templateMainScreen } from './assets/views/templateMainScreen.js'
 
 const changeRouter = (hash) =>{
     if(hash === '#/login' || hash === '#/register' || hash === '/#' || hash === '#' || hash === ''){
@@ -19,13 +20,13 @@ const showTemplate = (hash) =>{
         containerRoot.appendChild(templateLogin())
         break;
         case '/#':
-        containerRoot.appendChild(templateLogin())
+        containerRoot.appendChild(templateMainScreen())
         break;
         case '#/':
-        containerRoot.appendChild(templateLogin())
+        containerRoot.appendChild(templateMainScreen())
         break;
         case '':
-        containerRoot.appendChild(templateLogin())
+        containerRoot.appendChild(templateMainScreen())
         break;
         case 'register':
         containerRoot.appendChild(templateRegister())
