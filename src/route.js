@@ -1,9 +1,13 @@
 import { templateLogin } from './assets/views/templateLogin.js'
 import { templateRegister }  from  './assets/views/templateRegister.js'
+import { templateRegister2 } from './assets/views/templateRegister2.js'
+import { templateConfirmationTxt } from './assets/views/templateConfirmationTxt.js'
 import { templateMainScreen } from './assets/views/templateMainScreen.js'
+import { templateAbout} from './assets/views/templateAbout.js'
+
 
 const changeRouter = (hash) =>{
-    if(hash === '#/login' || hash === '#/register' || hash === '/#' || hash === '#' || hash === ''){
+    if( hash === '/#' || hash === '#' || hash === '' || hash === '#/login' || hash === '#/register' || hash ==='#/register2' || hash === 'confirmation' || hash === '#/about'){
         return showTemplate(hash);
     }
 }
@@ -16,9 +20,7 @@ const showTemplate = (hash) =>{
 
 
     switch(router){
-        case 'login': 
-        containerRoot.appendChild(templateLogin())
-        break;
+        
         case '/#':
         containerRoot.appendChild(templateMainScreen())
         break;
@@ -28,9 +30,21 @@ const showTemplate = (hash) =>{
         case '':
         containerRoot.appendChild(templateMainScreen())
         break;
+        case 'login': 
+        containerRoot.appendChild(templateLogin())
+        break;
         case 'register':
         containerRoot.appendChild(templateRegister())
         break;
+        case 'register2':
+        containerRoot.appendChild(templateRegister2())
+        break;
+        case '#/confirmation':
+        containerRoot.appendChild(templateConfirmationTxt())
+        break
+        case '#/about':
+        containerRoot.appendChild(templateAbout())
+        break
         default:
             containerRoot.innerHTML = `<p> Error 404</p>`
     }

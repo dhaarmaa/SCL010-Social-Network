@@ -1,21 +1,27 @@
 //vista del registro de usuario
- const registerAcount = () =>{
-    console.log("cuenta creada");
- }
+import { templateRegister2 } from './templateRegister2.js'
+
 export const templateRegister = () => {
     const containerRegister = document.createElement('div');
-
-    const contentRegister = `templateRegister`
+    //escrir html
+    const contentRegister = `<h1>REGISTRAR cuenta</h1>
+                            <p>Escriba su nombre</p>                            
+                            <input type= "text">
+                            <p>escriba su apellido</p>
+                            <input type= "text">
+                            <button id="back">atras</button>
+                            <button id="next1">adelante</button>`
 
     containerRegister.innerHTML = contentRegister;
 
-    const btn = containerRegister.querySelector('#registerbtn');
+    const btn = containerRegister.querySelector('#next1');
 
     btn.addEventListener('click', () =>{
-        registerAcount();
+        templateRegister2();
+        window.location.hash = '#/register2';
     })
-
-    return containerRegister;
+    
+return containerRegister;
 }
 
 // const createAccount = () => {

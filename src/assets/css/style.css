@@ -75,5 +75,7 @@ body {
     border: 1px solid #F2994A;
     box-sizing: border-box;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
