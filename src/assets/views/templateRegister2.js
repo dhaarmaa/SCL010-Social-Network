@@ -9,12 +9,12 @@ export const templateRegister2 = () => {
                             <p>Ingrese una contraseña</p>
                             <input type= "text">
                             <button id="back">atras</button>
-                            <button id="next1">adelante</button>`
+                            <button id="next2">adelante</button>`
 
     containerRegister2.innerHTML = contentRegister2;
 
 
-    const btn = containerRegister2.querySelector('#next1');
+    const btn = containerRegister2.querySelector('#next2');
 
     btn.addEventListener('click', () =>{
         templateConfirmationTxt();

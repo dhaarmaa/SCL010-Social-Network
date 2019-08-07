@@ -7,12 +7,14 @@ import { templateAbout} from './assets/views/templateAbout.js'
 
 
 const changeRouter = (hash) =>{
-    if( hash === '/#' || hash === '#' || hash === '' || hash === '#/login' || hash === '#/register' || hash ==='#/register2' || hash === 'confirmation' || hash === '#/about'){
+    console.log("HASH:", hash);
+    if( hash === '/#' || hash === '#' || hash === '' || hash === '#/login' || hash === '#/register' || hash ==='#/register2' || hash === '#/confirmation' || hash === '#/about'){
         return showTemplate(hash);
     }
 }
 
 const showTemplate = (hash) =>{
+    console.log("SHOW TEMPLATE HASH", hash);
     const router = hash.substring(2);
     const containerRoot = 
     document.getElementById('root');
@@ -37,11 +39,13 @@ const showTemplate = (hash) =>{
         containerRoot.appendChild(templateRegister())
         break;
         case 'register2':
+            console.log("register en switch");
         containerRoot.appendChild(templateRegister2())
         break;
         case '#/confirmation':
+            console.log("confirmation en switch");
         containerRoot.appendChild(templateConfirmationTxt())
-        break
+        break;
         case '#/about':
         containerRoot.appendChild(templateAbout())
         break
