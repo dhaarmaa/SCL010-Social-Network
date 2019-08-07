@@ -12,8 +12,6 @@ export const templateLogin = () => {
                         <input type= "text">
                         <button id="back">atras</button>
                         <button id="next">adelante</button>
-                        
-
                         `;
   // pasar el contenido al div
   containerLogin.innerHTML = contentLogin;
@@ -21,8 +19,10 @@ export const templateLogin = () => {
   const btn = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
   btn.addEventListener('click', () => {
-    templateAbout()
+    templateAbout();
     window.location.hash = '#/about';
   })
   return containerLogin;
 }
+
+// document.getElementById("next")
