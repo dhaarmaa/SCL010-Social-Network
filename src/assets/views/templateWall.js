@@ -8,7 +8,8 @@
     // creamos div que contendrá la plantilla
     const containerWall = document.createElement('div');
     // creamos el contenido del login
-    const contentWall = `<p>AQUI SE MOSTRARA EL MURO</p>
+    const contentWall = `< <input id="name" type="text">
+    <p>AQUI SE MOSTRARA EL MURO</p>
     <button id="back">atras</button>
     <button id="next">adelante</button>`;
     // pasar el contenido al div
