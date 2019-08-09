@@ -7,17 +7,25 @@ export const templateLogin = () => {
   // creamos el contenido del login
   const contentLogin = ` <h1>Iniciar Sesión</h1>
                         <p>Ingrese su correo de usuario:</p>                    
-                        <input  type="text" id="email" name="email"  required>
+                        <input  type="text" id="email" name="email"  placeholder="Ingrese un correo" required>
                            
                         <p>Ingrese su contraseña de usuario:</p>
-                        <input  type="password" id="password" name="password" required> 
+                        <input  type="password" id="password" name="password"  placeholder="Ingrese una contraseña" required> 
                         <button id="back">atras</button>
                         <button id="next">adelante</button>
                         `;
   // pasar el contenido al div
   containerLogin.innerHTML = contentLogin;
+
   // le pido que busque el id del boton dentro del div creado
-  const btn = containerLogin.querySelector('#next');
+  const btnBack = containerLogin.querySelector('#back');
+  // evento del botón que llama a la autentificación de google.
+  btnBack.addEventListener('click', () => {
+
+    window.location.hash = '';
+  });
+
+  const btnNext = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
   btn.addEventListener('click', () => {
     let mailValue= document.getElementById('email').value;

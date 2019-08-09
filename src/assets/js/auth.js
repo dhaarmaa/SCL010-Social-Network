@@ -7,7 +7,6 @@ export const saveUsers = (name, email,uid) => {
     name: name,
     email: email
    
-
   })
     .then(function (docRef) {
       console.log("Document written with ID: ", docRef.id);
@@ -17,7 +16,7 @@ export const saveUsers = (name, email,uid) => {
     });
 }
 
-
+//auntenticacion con google
 export const loginGoogle = () => {
     // console.log('Login con Google OK');
     const provider = new firebase.auth.GoogleAuthProvider();
