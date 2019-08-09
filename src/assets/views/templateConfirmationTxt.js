@@ -1,4 +1,4 @@
-import { templateAbout } from "./templateAbout";
+// import { templateAbout } from "./templateAbout";
 
 export const templateConfirmationTxt = () => {
     const containerConfirmationTxt = document.createElement('div');
@@ -9,11 +9,11 @@ export const templateConfirmationTxt = () => {
                             `
 
     containerConfirmationTxt.innerHTML = contentConfirmationTxt;
-    const btn = containerConfirmationTxt.querySelector('#login-register');
-    btn.addEventListener('click', () =>{
-        templateAbout()
-        window.location.hash = '#/about';
-    })
+    // const btn = containerConfirmationTxt.querySelector('#login-register');
+    // btn.addEventListener('click', () =>{
+    //     templateAbout()
+    //     window.location.hash = '#/about';
+    // })
 
     return containerConfirmationTxt;
 };

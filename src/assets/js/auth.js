@@ -1,4 +1,22 @@
 /* Funciones relacionadas con autentificación de usuari@s */
+//f(x) para crear coleccion de usuario con id, name y email
+export const saveUsers = (name, email,uid) => {
+  let db = firebase.firestore();
+  db.collection("users").add({
+    uid: uid,
+    name: name,
+    email: email
+   
+
+  })
+    .then(function (docRef) {
+      console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+}
+
 
 export const loginGoogle = () => {
     // console.log('Login con Google OK');
@@ -31,3 +49,7 @@ export const loginGoogle = () => {
   const saveUserToDatabaseAfterLogin = (uid, firstName, lastName, email) => {
     console.log(uid, firstName, lastName, email);
   };
+
+  //login con correo
+
+
