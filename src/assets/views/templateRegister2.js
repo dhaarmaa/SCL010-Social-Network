@@ -1,4 +1,3 @@
-import { templateConfirmationTxt } from "./templateConfirmationTxt.js";
 
 export const templateRegister2 = () => {
     const containerRegister2 = document.createElement('div');
@@ -8,18 +7,27 @@ export const templateRegister2 = () => {
                             <p>Ingrese un correo</p>                            
                             <input class="input" type= "text">
                             <p>Ingrese una contraseña</p>
-                            <input class="input" type= "text">
+                             <input class="input" type= "text">
+                             <p>Ingrese nuevamente su contraseña</p>
+                            <input type= "text">
                             <button class="button" id="back">Volver</button>
-                            <button class="button" id="next1">Seguir</button>`
+                            <button class="button" id="next">Seguir</button>`
+
 
     containerRegister2.innerHTML = contentRegister2;
 
 
-    const btn = containerRegister2.querySelector('#next1');
+    const btnNext = containerRegister2.querySelector('#next')
 
-    btn.addEventListener('click', () =>{
-        templateConfirmationTxt();
+    btnNext.addEventListener('click', () =>{
+     
         window.location.hash = '#/confirmation';
+    })
+
+    const btnBack = containerRegister2.querySelector('#back');
+    btnBack.addEventListener('click', () =>{
+     
+        window.location.hash = '#/register';
     })
     return containerRegister2;
 }
