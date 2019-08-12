@@ -1,5 +1,6 @@
 // import {  } from ""; //importar funcion de iniciar secion con correo con firebase
-import {  templateAbout} from './templateAbout.js'
+// import {  templateAbout} from './templateAbout.js'
+import
 
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
@@ -27,22 +28,22 @@ export const templateLogin = () => {
 
   const btnNext = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
-  btn.addEventListener('click', () => {
+  btnNext.addEventListener('click', () => {
     let mailValue= document.getElementById('email').value;
     let passValue= document.getElementById('password').value;
 
     if (validateLogin(mailValue, passValue)) {
       document.getElementById('error-message').innerHTML="Usuario / contraseña inválido";
-      document.getElementById('email2').value='';
-      document.getElementById('password2').value='';
+      document.getElementById('email').value='';
+      document.getElementById('password').value='';
       
     } else {
       login(mailValue, passValue);
         readNameDB();
      }
  
-    templateAbout();
-    window.location.hash = '#/about';
+    templateWall();
+    window.location.hash = '#/wall';
   })
   return containerLogin;
 }

@@ -1,3 +1,5 @@
+import { templateWall } from "../views/templateWall";
+
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -29,10 +31,35 @@ const saveUserToDatabaseAfterLogin = (userData) => {
     }
       sessionStorage.setItem('uid', doc.data().uid);
       sessionStorage.setItem('fullName', doc.data().fullName);   
-      sessionStorage.setItem('email', doc.data().email);   
+      sessionStorage.setItem('email', doc.data().email);  
+      templateWall(); 
       window.location.hash = '#/wall';
     })
   .catch(err => {
     console.log('Error getting document', err);
   }); 
 };
+
+//register
+
+export const register = ( email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+
+      let user = firebase.auth().currentUser;
+      let uid = user.uid;
+      //console.log(uid);
+      verifyAccount();
+      observer();
+      saveUsers(email,uid);
+     
+      window.location.hash = '#/wall';
+
+    })
+    .catch(error => {
+      // Handle Errors here.
+      let errorCode = error.code;
+      userInvalid(errorCode);
+      let errorMessage = error.message;
+    });
+}
