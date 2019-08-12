@@ -9,7 +9,7 @@ export const templateRegister2 = () => {
                             <p>Ingrese una contraseña</p>
                              <input class="input" type= "text">
                              <p>Ingrese nuevamente su contraseña</p>
-                            <input type= "text">
+                            <input class="input" type= "text">
                             <button class="button" id="back">Volver</button>
                             <button class="button" id="next">Seguir</button>`
 
