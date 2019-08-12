@@ -1,3 +1,6 @@
+
+import { toggleSignIn } from './../js/auth.js';
+
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
   const containerLogin = document.createElement('div');
@@ -5,10 +8,9 @@ export const templateLogin = () => {
   // creamos el contenido del login
   const contentLogin = ` <h1>Iniciar Sesión</h1>
                         <p>Ingrese su correo de usuario:</p>                            
-
-                        <input class="input" type= "text" placeholder="Ingrese un correo">
+                        <input id="email" class="input" type= "text" placeholder="Ingrese un correo">
                         <p>Ingrese su contraseña de usuario:</p>
-                        <input class="input" id="password" type= "password" placeholder="Ingrese una contraseña">
+                        <input id="password" class="input" type= "password" placeholder="Ingrese una contraseña">
                         <button class="button" id="back">Volver</button>
                         <button class="button" id="next">Seguir</button>
                         `;
@@ -26,7 +28,7 @@ export const templateLogin = () => {
   const btnNext = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
   btnNext.addEventListener('click', () => {
-
+    toggleSignIn();
     window.location.hash = '#/wall';
   })
   return containerLogin;
