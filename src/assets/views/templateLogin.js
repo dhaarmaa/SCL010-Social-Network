@@ -4,14 +4,15 @@ import {  templateAbout} from './templateAbout.js'
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
   const containerLogin = document.createElement('div');
+  containerLogin.setAttribute("class","mainClass");
   // creamos el contenido del login
   const contentLogin = ` <h1>Iniciar Sesión</h1>
                         <p>Ingrese su correo de usuario:</p>                            
-                        <input type= "text">
+                        <input class="input" type= "text">
                         <p>Ingrese su contraseña de usuario:</p>
-                        <input type= "text">
-                        <button id="back">atras</button>
-                        <button id="next">adelante</button>
+                        <input class="input" type= "text">
+                        <button class="button" id="back">Volver</button>
+                        <button class="button" id="next">Seguir</button>
                         
 
                         `;

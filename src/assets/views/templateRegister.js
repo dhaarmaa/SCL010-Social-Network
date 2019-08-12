@@ -3,14 +3,15 @@ import { templateRegister2 } from './templateRegister2.js'
 
 export const templateRegister = () => {
     const containerRegister = document.createElement('div');
+    containerRegister.setAttribute("class","mainClass");
     //escrir html
-    const contentRegister = `<h1>REGISTRAR cuenta</h1>
+    const contentRegister = `<h1>Registrar cuenta</h1>
                             <p>Escriba su nombre</p>                            
-                            <input type= "text">
-                            <p>escriba su apellido</p>
-                            <input type= "text">
-                            <button id="back">atras</button>
-                            <button id="next1">adelante</button>`
+                            <input class="input" type= "text">
+                            <p>Escriba su apellido</p>
+                            <input class="input" type= "text">
+                            <button class="button" id="back">Volver</button>
+                            <button class="button" id="next1">Seguir</button>`
 
     containerRegister.innerHTML = contentRegister;
 

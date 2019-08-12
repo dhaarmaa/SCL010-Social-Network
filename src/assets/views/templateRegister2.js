@@ -2,14 +2,15 @@ import { templateConfirmationTxt } from "./templateConfirmationTxt.js";
 
 export const templateRegister2 = () => {
     const containerRegister2 = document.createElement('div');
+    containerRegister2.setAttribute("class","mainClass");
     //escrir html
-    const contentRegister2 = `<h1>REGISTRAR cuenta</h1>
+    const contentRegister2 = `<h1>Registrar cuenta</h1>
                             <p>Ingrese un correo</p>                            
-                            <input type= "text">
+                            <input class="input" type= "text">
                             <p>Ingrese una contraseña</p>
-                            <input type= "text">
-                            <button id="back">atras</button>
-                            <button id="next1">adelante</button>`
+                            <input class="input" type= "text">
+                            <button class="button" id="back">Volver</button>
+                            <button class="button" id="next1">Seguir</button>`
 
     containerRegister2.innerHTML = contentRegister2;
 

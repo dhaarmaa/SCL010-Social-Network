@@ -5,12 +5,14 @@ import { templateRegister } from './templateRegister.js'
 export const templateMainScreen = () => {
     // creamos div que contendrá la plantilla
     const containerMainScreen = document.createElement('div');
+    containerMainScreen.setAttribute("class","mainClass");
     // creamos el contenido del MainScreen
     const contentMainScreen = ` 
-    <img src="https://q8j4b9t4.stackpathcdn.com/wp-content/uploads/2017/05/Happy-old-people-300x200.jpg" alt="adultos sonriendo" />
-    <button id="loginGoogle">INICIAR Sesión con Google</button>
-    <button id="login">INICIAR Sesión</button>
-    <button id="register">REGISTRAR cuenta</button>`;
+        <img width=120 height=120>
+        <h4>Vive la vida y olvida tu edad</h4>
+    <button class="button" id="loginGoogle">Iniciar Sesión con Google</button>
+    <button class="button" id="login">Iniciar Sesión</button>
+    <button class="button" id="register">Registrar Cuenta</button>`;
 
     // pasar el contenido al div
     containerMainScreen.innerHTML = contentMainScreen;
