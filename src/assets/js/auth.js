@@ -1,54 +1,38 @@
-/* Funciones relacionadas con autentificación de usuari@s */
-//f(x) para crear coleccion de usuario con id, name y email
-export const saveUsers = (name, email,uid) => {
-  let db = firebase.firestore();
-  db.collection("users").add({
-    uid: uid,
-    name: name,
-    email: email
-   
-  })
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
+export const loginGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  // esto devolvera una promesa
+  firebase.auth().signInWithPopup(provider).then(result => {
+      const user = result.user;
+      let userData = {
+        uid: user.uid,
+        fullName: user.displayName,
+        email: user.email,
+      } 
+      saveUserToDatabaseAfterLogin(userData);
     })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
+    .catch(err => {console.log(err);});
 }
 
-//auntenticacion con google
-export const loginGoogle = () => {
-    // console.log('Login con Google OK');
-    const provider = new firebase.auth.GoogleAuthProvider();
-  
-    // this will return a promise
-    firebase.auth().signInWithPopup(provider)
-      .then(result => {
-        const user = result.user;
-        // console.log("Hola", user.displayName);
-        let userName = splitGoogleDisplayName(user.displayName);
-        saveUserToDatabaseAfterLogin(user.uid, userName.firstName, userName.lastName, user.email);
-        // console.log(saveUserToDatabaseAfterLogin());
-        })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-  
-  const splitGoogleDisplayName = (displayName) => {
-    var splitDisplayNameArray = displayName.split(" ");
-    let userName = {
-      firstName: splitDisplayNameArray[0],
-      lastName: splitDisplayNameArray[1],
+//salvando los datos en la base dr dato de firebasa despues de logiarse con google
+const saveUserToDatabaseAfterLogin = (userData) => {
+  const db = firebase.firestore();
+  let docRef = db.collection('users').doc(userData.uid);
+  docRef.get()
+  .then(doc => {
+    if (!doc.exists) {
+          docRef.set({
+        uid: userData.uid,
+        fullName: userData.fullName,
+        email: userData.email,
+      });
     }
-  
-    return userName;
-  }
-  
-  const saveUserToDatabaseAfterLogin = (uid, firstName, lastName, email) => {
-    console.log(uid, firstName, lastName, email);
-  };
-
-  //login con correo
-
-
+      sessionStorage.setItem('uid', doc.data().uid);
+      sessionStorage.setItem('fullName', doc.data().fullName);   
+      sessionStorage.setItem('email', doc.data().email);   
+      window.location.hash = '#/wall';
+    })
+  .catch(err => {
+    console.log('Error getting document', err);
+  }); 
+};
