@@ -14,26 +14,27 @@ export const loginGoogle = () => {
     .catch(err => {console.log(err);});
 }
 
-//salvando los datos en la base dr dato de firebasa despues de logiarse con google
+//salvando los datos en la base de datos de firebasa despues de logiarse con google
  export const saveUserToDatabaseAfterLogin = (userData) => {
   const db = firebase.firestore();
   let docRef = db.collection('users').doc(userData.uid);
   docRef.get()
   .then(doc => {
+   let user={};
+   
     if (!doc.exists) {
-          docRef.set({
-        uid: userData.uid,
-        fullName: userData.fullName,
-        email: userData.email,
-      });
+        docRef.set(userData);
+        user=userData
+    }else{
+      user=doc.data();
     }
-      sessionStorage.setItem('uid', doc.data().uid);
-      sessionStorage.setItem('fullName', doc.data().fullName);   
-      sessionStorage.setItem('email', doc.data().email);   
-      window.location.hash = '#/wall';
+    sessionStorage.setItem('uid', user.uid);
+    sessionStorage.setItem('fullName', user.fullName);   
+    sessionStorage.setItem('email', user.email);   
+    window.location.hash = '#/wall';
     })
   .catch(err => {
-    console.log('Error getting document', err);
+    console.log('Error al obtener documento', err);
   }); 
 };
 
@@ -41,16 +42,25 @@ export const loginGoogle = () => {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   if (email.length < 4) {
-    alert('Please enter an email address.');
+    alert('Por favor introduzca una dirección de correo eléctronico.');
     return;
   }
   if (password.length < 4) {
-    alert('Please enter a password.');
+    alert('Por favor ingrese una contraseña.');
     return;
   }
   // Sign in with email and pass.
   // [START createwithemail]
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(data => {
+    sendEmailVerification();
+    saveUserToDatabaseAfterLogin({
+      password: password,
+      email:email,
+      uid:data.user.uid,
+    });
+  })
+  .catch(function(error) {
     // Handle Errors here.
     let errorCode = error.code;
     let errorMessage = error.message;
@@ -76,7 +86,6 @@ export const sendEmailVerification=()=> {
     // Email Verification sent!
     // [START_EXCLUDE]
     alert('¡Verificación de correo electrónico enviada!');
-    console.log("hola");
     // [END_EXCLUDE]
   });
   // [END sendemailverification]

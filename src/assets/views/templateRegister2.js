@@ -12,7 +12,7 @@ export const templateRegister2 = () => {
                             <p>Ingrese un correo</p>                            
                             <input id="email" class="input" type= "text">
                             <p>Ingrese una contraseña</p>
-                             <input id="password" class="input" type= "text">
+                             <input id="password" class="input" type="password">
                              <p>Ingrese nuevamente su contraseña</p>
                             <input class="input" type= "text">
                             <button class="button" id="back">Volver</button>
@@ -26,8 +26,6 @@ export const templateRegister2 = () => {
 
     btnNext.addEventListener('click', () =>{
         handleSignUp();
-        sendEmailVerification();
-        saveUserToDatabaseAfterLogin(userData);
         window.location.hash = '#/confirmation';
     })
 
