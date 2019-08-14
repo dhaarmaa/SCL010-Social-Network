@@ -1,5 +1,5 @@
 
-import { toggleSignIn } from './../js/auth.js';
+import { signIn } from './../js/auth.js';
 
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
@@ -28,7 +28,7 @@ export const templateLogin = () => {
   const btnNext = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
   btnNext.addEventListener('click', () => {
-    toggleSignIn();
+    signIn();
     window.location.hash = '#/wall';
   })
   return containerLogin;
