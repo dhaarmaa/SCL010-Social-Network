@@ -1,4 +1,4 @@
-import {templateAbout} from './assets/views/templateAbout.js'
+// import {templateAbout} from './assets/views/templateAbout.js'
 import {templateConfirmationTxt} from './assets/views/templateConfirmationTxt.js'
 //import {templateGoogle} from './assets/views/templateGoogle.js'
 import {templateLogin} from './assets/views/templateLogin.js'
@@ -26,9 +26,9 @@ const showTemplate = (hash) =>{
 
 
     switch (router) {
-        case 'about':
-            containerRoot.appendChild(templateAbout())
-            break;
+        // case 'about':
+        //     containerRoot.appendChild(templateAbout())
+        //     break;
         case 'confirmation':
             containerRoot.appendChild(templateConfirmationTxt())
             break;

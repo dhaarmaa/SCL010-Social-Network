@@ -14,11 +14,14 @@ export const templateRegister = () => {
 
   const btnBack = containerRegister.querySelector('#back');
   btnBack.addEventListener('click', () => {
+
     window.location.hash = '';
   })
 
   const btnNext = containerRegister.querySelector('#next');
   btnNext.addEventListener('click', () => {
+    let NamelValue= document.getElementById('name').value;
+    let lastNameValue= document.getElementById('lastName').value;
     window.location.hash = '#/register2';
   })
 

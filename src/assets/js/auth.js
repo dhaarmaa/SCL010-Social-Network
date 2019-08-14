@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import { templateWall } from "../views/templateWall";
+
+>>>>>>> 01157e32632dc3e1002121820beb5d613b0e176c
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -28,16 +33,25 @@ export const loginGoogle = () => {
     }else{
       user=doc.data();
     }
+<<<<<<< HEAD
     sessionStorage.setItem('uid', user.uid);
     sessionStorage.setItem('fullName', user.fullName);   
     sessionStorage.setItem('email', user.email);   
     window.location.hash = '#/wall';
+=======
+      sessionStorage.setItem('uid', doc.data().uid);
+      sessionStorage.setItem('fullName', doc.data().fullName);   
+      sessionStorage.setItem('email', doc.data().email);  
+      templateWall(); 
+      window.location.hash = '#/wall';
+>>>>>>> 01157e32632dc3e1002121820beb5d613b0e176c
     })
   .catch(err => {
     console.log('Error al obtener documento', err);
   }); 
 };
 
+<<<<<<< HEAD
  export const handleSignUp=()=> {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
@@ -127,3 +141,28 @@ export const toggleSignIn=()=> {
   }
   document.getElementById('quickstart-sign-in').disabled = true;
 }
+=======
+//register
+
+export const register = ( email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+
+      let user = firebase.auth().currentUser;
+      let uid = user.uid;
+      //console.log(uid);
+      verifyAccount();
+      observer();
+      saveUsers(email,uid);
+     
+      window.location.hash = '#/wall';
+
+    })
+    .catch(error => {
+      // Handle Errors here.
+      let errorCode = error.code;
+      userInvalid(errorCode);
+      let errorMessage = error.message;
+    });
+}
+>>>>>>> 01157e32632dc3e1002121820beb5d613b0e176c
