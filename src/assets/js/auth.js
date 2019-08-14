@@ -53,7 +53,6 @@ export const loginGoogle = () => {
   // [START createwithemail]
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then(data => {
-    
     sendEmailVerification();
     saveUserToDatabaseAfterLogin({
       password: password,
