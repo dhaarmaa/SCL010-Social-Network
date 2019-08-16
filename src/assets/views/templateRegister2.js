@@ -1,10 +1,10 @@
-import { register } from '../js/auth.js'
-import { templateWall } from './templateWall.js';
-
-
-import { sendEmailVerification } from './../js/auth.js';
+// import { register } from '../js/auth.js'
+// import { templateWall } from './templateWall.js';
+import {  templateRegister }  from './templateRegister.js'
+// import { sendEmailVerification } from './../js/auth.js';
 import { handleSignUp } from './../js/auth.js';
-import { saveUserToDatabaseAfterLogin } from './../js/auth.js';
+// import { saveUserToDatabaseAfterLogin } from './../js/auth.js';
+import { templateConfirmationTxt } from './templateConfirmationTxt.js'
 
 
 export const templateRegister2 = () => {
@@ -28,30 +28,14 @@ export const templateRegister2 = () => {
     const btnNext = containerRegister2.querySelector('#next')
 
     btnNext.addEventListener('click', () =>{
-<<<<<<< HEAD
         handleSignUp();
+        templateConfirmationTxt();
         window.location.hash = '#/confirmation';
-=======
-        let passwordValue = document.getElementById('password').value;
-        // let uidValue = document.getElementById('id').value;
-        
-    if (validateRegister(emailValue, passwordValue)) {
-        if (passwordValue.length <6 && passwordValue.length >0){
-            document.getElementById("error-message").innerHTML = "Contrasena de minimo 6 caracteres"; 
-        }
-        else {
-            register(nameValue,emailValue, passwordValue,uidValue);
-            document.getElementById('error-message').innerHTML="Verifica tu correo";
-        }
-    }
-    templateWall();
-        window.location.hash = '#/Wall';
->>>>>>> 01157e32632dc3e1002121820beb5d613b0e176c
     })
 
     const btnBack = containerRegister2.querySelector('#back');
     btnBack.addEventListener('click', () =>{
-     
+        templateRegister();
         window.location.hash = '#/register';
     })
     return containerRegister2;

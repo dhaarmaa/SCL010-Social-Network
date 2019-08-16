@@ -1,3 +1,7 @@
+import { templateMainScreen } from "./templateMainScreen.js";
+import { templateRegister2 } from "./templateRegister2";
+import { template } from "@babel/core";
+
 export const templateRegister = () => {
     const containerRegister = document.createElement('div');
     containerRegister.setAttribute("class","mainClass");
@@ -14,7 +18,7 @@ export const templateRegister = () => {
 
   const btnBack = containerRegister.querySelector('#back');
   btnBack.addEventListener('click', () => {
-
+    templateMainScreen();
     window.location.hash = '';
   })
 
@@ -22,6 +26,7 @@ export const templateRegister = () => {
   btnNext.addEventListener('click', () => {
     let NamelValue= document.getElementById('name').value;
     let lastNameValue= document.getElementById('lastName').value;
+    templateRegister2();
     window.location.hash = '#/register2';
   })
 
