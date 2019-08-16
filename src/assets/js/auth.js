@@ -39,8 +39,16 @@ export const loginGoogle = () => {
 };
 
  export const handleSignUp=()=> {
+  let name=sessionStorage.getItem('name');
+  let lastName = sessionStorage.getItem('lastName');
+  let fullName=name+" "+lastName;
   let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
+  let password;
+  if(checkingPassword()){
+    password = document.getElementById('password').value; 
+  } else{
+   alert ("revisar contraseñas, no son iguales")
+  }
   if (email.length < 4) {
     alert('Por favor introduzca una dirección de correo eléctronico.');
     return;
@@ -55,6 +63,7 @@ export const loginGoogle = () => {
   .then(data => {
     sendEmailVerification();
     saveUserToDatabaseAfterLogin({
+      fullName:fullName,
       password: password,
       email:email,
       uid:data.user.uid,
@@ -91,10 +100,23 @@ export const sendEmailVerification=()=> {
   // [END sendemailverification]
 }
 
+const checkingPassword =()=>{
+  let password = document.getElementById('password').value;  
+  let password1 = document.getElementById('password1').value;  
+  let checkingPassword;
+   if(password===password1){
+    checkingPassword=true;
+   }else{
+    checkingPassword=false;
+   }
+ return checkingPassword;
+}
+
+
 export const signIn=()=> {
   let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;   
-    if (email.length < 4) {
+  let password = document.getElementById('password').value;  
+  if (email.length < 4) {
       alert('Por favor introduzca una dirección de correo eléctronico.');
       return;
     }

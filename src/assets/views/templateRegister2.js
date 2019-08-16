@@ -14,17 +14,17 @@ export const templateRegister2 = () => {
                             <p>Ingrese una contraseña</p>
                              <input id="password" class="input" type="password">
                              <p>Ingrese nuevamente su contraseña</p>
-                            <input class="input" type= "text">
+                             <input id="password1" class="input" type="password">                          
+                             <input class="input" id="name" type= "text" hidden="false">
                             <button class="button" id="back">Volver</button>
                             <button class="button" id="next">Seguir</button>`
 
 
     containerRegister2.innerHTML = contentRegister2;
-
-
     const btnNext = containerRegister2.querySelector('#next')
 
     btnNext.addEventListener('click', () =>{
+
         handleSignUp();
         window.location.hash = '#/confirmation';
     })

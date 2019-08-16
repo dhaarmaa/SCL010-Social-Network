@@ -19,6 +19,8 @@ export const templateRegister = () => {
 
   const btnNext = containerRegister.querySelector('#next');
   btnNext.addEventListener('click', () => {
+    sessionStorage.setItem('name', document.getElementById("name").value);
+    sessionStorage.setItem('lastName', document.getElementById("lastName").value);   
     window.location.hash = '#/register2';
   })
 
