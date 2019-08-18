@@ -1,5 +1,5 @@
 
-import { toggleSignIn } from './../js/auth.js';
+import { signIn } from './../js/auth.js';
 
 export const templateLogin = () => {
   // creamos div que contendrá la plantilla
@@ -28,8 +28,15 @@ export const templateLogin = () => {
   const btnNext = containerLogin.querySelector('#next');
   // evento del botón que llama a la autentificación de google.
   btnNext.addEventListener('click', () => {
-    toggleSignIn();
-    window.location.hash = '#/wall';
+    signIn();
+    if (firebase.auth().currentUser != null && firebase.auth().currentUser.emailVerified)
+    {
+      window.location.hash = '#/wall';
+    }
+    else {
+      console.log("No está verificado el usuario");
+      console.log(firebase.auth().currentUser.emailVerified);
+    }
   })
   return containerLogin;
 }

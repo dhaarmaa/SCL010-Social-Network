@@ -1,6 +1,6 @@
 import { templateMainScreen } from "./templateMainScreen.js";
-import { templateRegister2 } from "./templateRegister2";
-import { template } from "@babel/core";
+import { templateRegister2 } from "./templateRegister2.js";
+// import { template } from "@babel/core";
 
 export const templateRegister = () => {
     const containerRegister = document.createElement('div');
@@ -24,8 +24,8 @@ export const templateRegister = () => {
 
   const btnNext = containerRegister.querySelector('#next');
   btnNext.addEventListener('click', () => {
-    let NamelValue= document.getElementById('name').value;
-    let lastNameValue= document.getElementById('lastName').value;
+    sessionStorage.setItem('name', document.getElementById("name").value);
+    sessionStorage.setItem('lastName', document.getElementById("lastName").value);   
     templateRegister2();
     window.location.hash = '#/register2';
   })

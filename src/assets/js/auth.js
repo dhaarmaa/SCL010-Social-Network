@@ -39,8 +39,16 @@ export const loginGoogle = () => {
 };
 
  export const handleSignUp=()=> {
+  let name=sessionStorage.getItem('name');
+  let lastName = sessionStorage.getItem('lastName');
+  let fullName=name+" "+lastName;
   let email = document.getElementById('email').value;
-  let password = document.getElementById('password').value;
+  let password;
+  if(checkingPassword()){
+    password = document.getElementById('password').value; 
+  } else{
+   alert ("revisar contraseñas, no son iguales")
+  }
   if (email.length < 4) {
     alert('Por favor introduzca una dirección de correo eléctronico.');
     return;
@@ -55,6 +63,7 @@ export const loginGoogle = () => {
   .then(data => {
     sendEmailVerification();
     saveUserToDatabaseAfterLogin({
+      fullName:fullName,
       password: password,
       email:email,
       uid:data.user.uid,
@@ -91,15 +100,23 @@ export const sendEmailVerification=()=> {
   // [END sendemailverification]
 }
 
-export const toggleSignIn=()=> {
-  if (firebase.auth().currentUser) {
-    // [START signout]
-    firebase.auth().signOut();
-    // [END signout]
-  } else {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    if (email.length < 4) {
+const checkingPassword =()=>{
+  let password = document.getElementById('password').value;  
+  let password1 = document.getElementById('password1').value;  
+  let checkingPassword;
+   if(password===password1){
+    checkingPassword=true;
+   }else{
+    checkingPassword=false;
+   }
+ return checkingPassword;
+}
+
+
+export const signIn=()=> {
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;  
+  if (email.length < 4) {
       alert('Por favor introduzca una dirección de correo eléctronico.');
       return;
     }
@@ -120,10 +137,10 @@ export const toggleSignIn=()=> {
         alert(errorMessage);
       }
       console.log(error);
-      document.getElementById('quickstart-sign-in').disabled = false;
+      //document.getElementById('quickstart-sign-in').disabled = false;
       // [END_EXCLUDE]
     });
     // [END authwithemail]
-  }
-  document.getElementById('quickstart-sign-in').disabled = true;
+    //document.getElementById('quickstart-sign-in').disabled = true;
 }
+  
