@@ -1,7 +1,6 @@
 //login con goolge
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-
   // esto devolvera una promesa
   firebase.auth().signInWithPopup(provider).then(result => {
       const user = result.user;
@@ -11,7 +10,23 @@ export const loginGoogle = () => {
         email: user.email,
         authentication: "google",
       }
-      saveUserToDatabaseAfterLogin(userData);
+      const db = firebase.firestore();
+      db.collection('users').get()
+        .then((list) => {
+          let authentication = false;
+          list.forEach((doc) => {
+            if (doc.data().authentication === "email" && doc.data().email === user.email) {
+              authentication = true;
+              alert("Usted esta auntentificado por email");
+            }
+          });
+          if (!authentication) {
+            saveUserToDatabaseAfterLogin(userData);
+          }
+        })
+        .catch((err) => {
+          console.log('Error getting documents', err);
+        });
     })
     .catch(err => {
       console.log(err);
@@ -71,7 +86,6 @@ export const handleSignUp = () => {
       sendEmailVerification();
       saveUserToDatabaseAfterLogin({
         fullName: fullName,
-        password: password,
         email: email,
         uid: data.user.uid,
         authentication: "email",
@@ -138,45 +152,44 @@ export const signIn = () => {
   let db = firebase.firestore();
   let docRef = db.collection("users");
   docRef.get()
-  .then(list => {
-    list.forEach((doc) => {
-     if (doc.data().email=== email&& doc.data().authentication==="google"){
-       alert("Usted esta auntentificado por google, por favor ir a la pantalla de incio e iniciar seccion por google");
-     }
-     else if(doc.data().email=== email&& doc.data().authentication==="email"){
-      firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-        let currentUser = firebase.auth().currentUser;
-        if (currentUser != null && currentUser.emailVerified) {
-          let db2 = firebase.firestore();
-          let docRef2 = db2.collection("users").doc(currentUser.uid);
-          docRef2.get()
-            .then(doc => {
-              localStorage.setItem("fullName", doc.data().fullName);
-              window.location.hash = '#/wall';
+    .then(list => {
+      list.forEach((doc) => {
+        if (doc.data().email === email && doc.data().authentication === "google") {
+          alert("Usted esta auntentificado por google, por favor ir a la pantalla de incio e iniciar seccion por google");
+        } else if (doc.data().email === email && doc.data().authentication === "email") {
+          firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+              let currentUser = firebase.auth().currentUser;
+              if (currentUser != null && currentUser.emailVerified) {
+                let db2 = firebase.firestore();
+                let docRef2 = db2.collection("users").doc(currentUser.uid);
+                docRef2.get()
+                  .then(doc => {
+                    localStorage.setItem("fullName", doc.data().fullName);
+                    window.location.hash = '#/wall';
+                  });
+              } else {
+                alert("No está verificado el usuario");
+                // console.log(firebase.auth().currentUser.emailVerified);
+              }
+            })
+            .catch(function (error) {
+              // Handle Errors here.
+              let errorCode = error.code;
+              let errorMessage = error.message;
+              // [START_EXCLUDE]
+              if (errorCode === 'auth/wrong-password') {
+                alert('Contraseña incorrecta.');
+              } else {
+                alert(errorMessage);
+              }
+              console.log(error);
+              //document.getElementById('quickstart-sign-in').disabled = false;
+              // [END_EXCLUDE]
             });
-        } else {
-          alert("No está verificado el usuario");
-          // console.log(firebase.auth().currentUser.emailVerified);
         }
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode === 'auth/wrong-password') {
-          alert('Contraseña incorrecta.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-        //document.getElementById('quickstart-sign-in').disabled = false;
-        // [END_EXCLUDE]
       });
-     }
     });
-  }); 
   // [END authwithemail]
   //document.getElementById('quickstart-sign-in').disabled = true;
 }
