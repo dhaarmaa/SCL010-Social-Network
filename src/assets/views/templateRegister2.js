@@ -1,11 +1,5 @@
-// import { register } from '../js/auth.js'
-// import { templateWall } from './templateWall.js';
-import {  templateRegister }  from './templateRegister.js'
-// import { sendEmailVerification } from './../js/auth.js';
-import { handleSignUp } from './../js/auth.js';
-// import { saveUserToDatabaseAfterLogin } from './../js/auth.js';
-import { templateConfirmationTxt } from './templateConfirmationTxt.js'
 
+import { handleSignUp } from './../js/auth.js';
 
 export const templateRegister2 = () => {
     const containerRegister2 = document.createElement('div');
@@ -27,10 +21,7 @@ export const templateRegister2 = () => {
     const btnNext = containerRegister2.querySelector('#next')
 
     btnNext.addEventListener('click', () =>{
-
-        handleSignUp();
-        templateConfirmationTxt();
-        window.location.hash = '#/confirmation';
+       handleSignUp();
     })
 
     const btnBack = containerRegister2.querySelector('#back');

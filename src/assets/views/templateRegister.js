@@ -24,19 +24,12 @@ export const templateRegister = () => {
 
   const btnNext = containerRegister.querySelector('#next');
   btnNext.addEventListener('click', () => {
-    sessionStorage.setItem('name', document.getElementById("name").value);
-    sessionStorage.setItem('lastName', document.getElementById("lastName").value);   
-    templateRegister2();
+    localStorage.setItem('name', document.getElementById("name").value);
+    localStorage.setItem('lastName', document.getElementById("lastName").value);   
     window.location.hash = '#/register2';
   })
 
   return containerRegister;
 }
 
-/*const capturaDatosLogin = () => {
 
-  let name= document.getElementById("name").value;
-  let lastName=document.getElementById("lastName").value;
-  if(9)
-  
-  }*/

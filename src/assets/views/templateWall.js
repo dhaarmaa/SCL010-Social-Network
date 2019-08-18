@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { savePost, getPost } from "../js/auth.js";
 
+=======
+import { signOut } from './../js/auth.js';
+>>>>>>> 3263124a67cbd9e46b3b92dbbac63a7ae515ebad
     
     export const templateWall= () => {
     // creamos div que contendrá la plantilla
@@ -18,7 +22,7 @@ import { savePost, getPost } from "../js/auth.js";
     containerWall.innerHTML = contentWall;
     
     const fullName=containerWall.querySelector('#fullName');
-    fullName.innerHTML=sessionStorage.getItem('fullName');
+    fullName.innerHTML=localStorage.getItem('fullName');
 
     const btnBack = containerWall.querySelector('#back');
     btnBack.addEventListener('click', () => {
