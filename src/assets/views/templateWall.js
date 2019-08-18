@@ -1,11 +1,16 @@
+import { savePost, getPost } from "../js/auth.js";
+
+    
     export const templateWall= () => {
     // creamos div que contendrá la plantilla
     const containerWall = document.createElement('div');
     // creamos el contenido del login
     const contentWall = `<h1 id="fullName"></h1>
                         <p id="post">¿Eventos?, cuentanos!</p>
-                        <textarea placeholder="escribe algo.." name=""  id="text-post"></textarea>
+                        <textarea  maxlength="50" rows="4" cols="40" placeholder="escribe algo.." name=""  id="text-post"></textarea>
                         <button  id="toPost" class="buttonPost">Publicar</button>
+                        <p id="post-error" class="error"></p>
+                        <!--menu de abajo/-->
                         <button id="back" class="buttonA">atras</button>
                         <button id="next" class="buttonA">Publicaciones</button>
                         <button id="profile" class="buttonA">Perfil</button>`;
@@ -22,19 +27,21 @@
 
     const btnToPost = containerWall.querySelector('#toPost');
     btnToPost.addEventListener('click', ()=>{
-      let post = document.getElementById('text-post').value;
-		  let count = 0;
-		  let liked = false;
-		  if(document.getElementById('text-post').value === ''|| document.getElementById('text-post').value<2){
-			  document.getElementById('post-error').style.display = "block";
-			  document.getElementById('post-error').innerHTML = "Publicación debe tener minimo 2 caracteres"
-		  }else{
-			  document.getElementById('post-error').style.display = "none";
-			  createPost(post, count, liked);
-		  }
-    })
+      let textPost = document.getElementById('text-post').value;
+      let alertPost = document.getElementById('post-error'); 
+      if (textPost === '' || textPost === ' ') {
+        alertPost.innerHTML = "Debes ingresar un comentario"
+      }
+      else {
+        savePost();
+        // document.getElementById("containerWall").innerHTML = "";
+        // containerWall.innerHTML = "";
+        getPost();
+      }
+    
+      })
    
-    return containerWall;
+    return containerWall
   }
 
 

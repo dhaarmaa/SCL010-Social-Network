@@ -53,7 +53,7 @@ const showTemplate = (hash) =>{
         case 'wall':
             containerRoot.appendChild(templateWall())
             break;
-    return containerConfirmationTxt;
+
         case 'confirmation':
             containerRoot.appendChild(templateConfirmationTxt());
             break;
