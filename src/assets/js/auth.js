@@ -238,7 +238,7 @@ db.collection("posts").doc(id).delete().then(function() {
 })
 }
   
-
+//f(x) de cierre de sesión
 export const signOut = () => {
   //Ejuecutamos la salida mediante firebase auth
   firebase.auth().signOut().then(function () {

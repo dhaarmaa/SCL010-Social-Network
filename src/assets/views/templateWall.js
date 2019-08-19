@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { savePost, getPost } from "../js/auth.js";
-
-=======
 import { signOut } from './../js/auth.js';
->>>>>>> 3263124a67cbd9e46b3b92dbbac63a7ae515ebad
     
     export const templateWall= () => {
     // creamos div que contendrá la plantilla
@@ -15,19 +10,32 @@ import { signOut } from './../js/auth.js';
                         <button  id="toPost" class="buttonPost">Publicar</button>
                         <p id="post-error" class="error"></p>
                         <!--menu de abajo/-->
-                        <button id="back" class="buttonA">atras</button>
+                        <!--<button id="back" class="buttonA">atras</button>
                         <button id="next" class="buttonA">Publicaciones</button>
-                        <button id="profile" class="buttonA">Perfil</button>`;
-    // pasar el contenido al div
+                        <button id="profile" class="buttonA">Perfil</button>/-->
+                        <nav class="nav">
+                            <a href="#/">Atras</a>
+                            <a href="#/wall">Publicaciones</a>
+                            <a href="#/profile">Perfil</a>
+                          </nav>`;
+    // pasar el contenido al div}}
     containerWall.innerHTML = contentWall;
+
+    // const contentMenu = ` <nav class="nav">
+    //                         <a href="''">Atras</a>
+    //                         <a href="#/wall">Publicaciones</a>
+    //                         <a href="#/profile">Perfil</a>
+    //                       </nav>`
+    // containerWall.innerHTML = contentMenu;
+
     
     const fullName=containerWall.querySelector('#fullName');
     fullName.innerHTML=localStorage.getItem('fullName');
 
-    const btnBack = containerWall.querySelector('#back');
-    btnBack.addEventListener('click', () => {
-      window.location.hash = '';
-    });
+    // const btnBack = containerWall.querySelector('#back');
+    // btnBack.addEventListener('click', () => {
+    //   window.location.hash = '';
+    // });
 
     const btnToPost = containerWall.querySelector('#toPost');
     btnToPost.addEventListener('click', ()=>{
